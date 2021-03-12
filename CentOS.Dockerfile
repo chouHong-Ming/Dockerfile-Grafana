@@ -24,7 +24,7 @@ RUN yum install -y grafana-${GRAFANA_VERSION}-1.x86_64.rpm
 RUN mkdir "$PID_FILE_DIR" && \
     chmod 777 "$PID_FILE_DIR"
 
-RUN yum install -y wget
+RUN yum remove -y wget
 RUN rm -f grafana-${GRAFANA_VERSION}-1.x86_64.rpm
 
 
