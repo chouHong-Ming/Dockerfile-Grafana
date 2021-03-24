@@ -47,7 +47,8 @@ RUN chown -R grafana:grafana "$LOG_DIR" "$DATA_DIR" && \
 RUN chmod -R 777 "$PID_FILE_DIR" && \
     chmod -R 755 "$LOG_DIR" "$DATA_DIR" "$CONF_DIR" && \
     chmod 755 "$GRAFANA_HOME"
-RUN chmod 640 "$CONF_DIR"/grafana.ini "$CONF_DIR"/ldap.toml "$PROVISIONING_CFG_DIR"/*/sample.yaml
+RUN chmod 640 "$CONF_DIR"/ldap.toml "$PROVISIONING_CFG_DIR"/*/sample.yaml && \
+    chmod 660 "$CONF_DIR"/grafana.ini
 
 RUN cp "$GRAFANA_HOME"/bin/grafana-cli "$GRAFANA_HOME"/bin/grafana-server /usr/sbin/.
 

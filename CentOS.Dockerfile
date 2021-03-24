@@ -30,7 +30,7 @@ RUN rm -f grafana-${GRAFANA_VERSION}-1.x86_64.rpm
 
 ADD asset/grafana.ini /etc/grafana/.
 RUN chown root:grafana /etc/grafana/grafana.ini && \
-    chmod 640 /etc/grafana/grafana.ini
+    chmod 660 /etc/grafana/grafana.ini
 
 
 USER grafana:grafana
