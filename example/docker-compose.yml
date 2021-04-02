@@ -1,0 +1,31 @@
+version: "3.7"
+services:
+  grafana:
+    # image: chouhongming/grafana
+    build: 
+      context: ..
+      dockerfile: CentOS.Dockerfile
+    ports:
+      - "3000:3000/tcp"
+    volumes:
+      # Default path of the Grafana persistent data
+      - ./data:/var/lib/grafana
+      # Unmark when setting the environment "MOUNT_CONFIG" as true
+      # - ./grafana.ini:/etc/grafana/grafana.ini
+      # Unmark if you want to mount your own date folder
+      # - ./data:/data
+      # - ./log:/log
+      # - ./plugin:/plugin
+      # - ./provisioning:/provisioning
+    environment:
+      - TIMEZONE=UTC
+      - MOUNT_CONFIG=false
+      - PLUGINS=alexanderzobnin-zabbix-app,grafana-piechart-panel,grafana-clock-panel,grafana-googlesheets-datasource
+      # Unmark if you want to mount your own date folder
+      # - PATHS_DATA=/data
+      # - PATHS_LOGS=/log
+      # - PATHS_PLUGINS=/plugin
+      # - PATHS_PROVISIONING=/provisioning
+      # You can the env variable as the Grafana config above, there are all of the setting example in the file asset/grafana.ini
+      - APP_MODE=production
+
