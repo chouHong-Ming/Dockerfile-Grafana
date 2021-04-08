@@ -41,6 +41,9 @@ if [ -n "$PATHS_PROVISIONING" ]; then
 fi
 
 
+ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
+
+
 if [ ! -r "$CONF_FILE" ]; then
     echo "[Warning] ${CONF_FILE} can't be read, use default config file"
     MOUNT_CONFIG=false
